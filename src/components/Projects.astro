@@ -4,90 +4,161 @@ import NextJS from "./icons/NextJS.astro"
 import Tailwind from "./icons/Tailwind.astro"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
+import SwiftIcon from "@/components/icons/Swift.astro"
+import AndroidIcon from "@/components/icons/Android.astro"
+import FlutterIcon from "@/components/icons/Flutter.astro"
+import HtmlIcon from "@/components/icons/Html.astro"
+import JSIcon from "@/components/icons/JS.astro"
+import CSSIcon from "@/components/icons/CSS.astro"
+import DjangoIcon from "@/components/icons/Django.astro"
+import BootstrapIcon from "@/components/icons/Bootstrap.astro"
 
 const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-}
-const PROJECTS = [
-  {
-    title: "SVGL - A beautiful library with SVG logos",
-    description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
-  },
-  {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-    description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
-  },
-]
+    NEXT: {
+        name: "Next.js",
+        class: "bg-black text-white",
+        icon: NextJS,
+    },
+    TAILWIND: {
+        name: "Tailwind CSS",
+        class: "bg-[#003159] text-white",
+        icon: Tailwind,
+    },
+    SWIFT: {
+        name: "Swift",
+        class: "bg-orange-500 text-white",
+        icon: SwiftIcon,
+    },
+    ANDROID: {
+        name: "Android (Java)",
+        class: "bg-green-600 text-white",
+        icon: AndroidIcon,
+    },
+    FLUTTER: {
+        name: "Flutter",
+        class: "bg-blue-400 text-white",
+        icon: FlutterIcon,
+    },
+    HTML: {
+        name: "HTML",
+        class: "bg-orange-400 text-white",
+        icon: HtmlIcon,
+    },
+    JS: {
+        name: "JS",
+        class: "bg-yellow-400 text-white",
+        icon: JSIcon,
+    },
+    CSS: {
+        name: "CSS",
+        class: "bg-blue-600 text-white",
+        icon: CSSIcon,
+    },
+    DJANGO: {
+        name: "Django",
+        class: "bg-[#092E20] text-white", // color oficial de Django
+        icon: DjangoIcon,
+    },
+    BOOTSTRAP: {
+        name: "Bootstrap",
+        class: "bg-[#7952B3] text-white", // color oficial de Bootstrap
+        icon: BootstrapIcon,
+    },
+};
+
+const APPS = [
+    {
+        title: "TAXit!",
+        description:
+            "App de gestión tributaria para empresas y contribuyentes. Participo en su mantenimiento y evolución, aplicando mejoras en la app móvil para iOS y Android, e implementando funcionalidades como la facturación electrónica.",
+        image: "/projects/taxit-cover.png",
+        tags: [TAGS.SWIFT, TAGS.ANDROID],
+        platforms: ["iOS", "Android"],
+        role: "Soporte y desarrollo continuo de la app móvil · 2022 – Actualidad",
+        private: true,
+        // github: "https://github.com/pheralb/svgl",
+    },
+    {
+        title: "ClassLift",
+        description:
+            "App académica desarrollada con Flutter, con autenticación mediante Firebase y backend en Java + PostgreSQL. En desarrollo, próximamente incluirá IA para planificación inteligente.",
+        image: "/projects/Cover.png",
+        tags: [TAGS.FLUTTER],
+        platforms: ["iOS", "Android"],
+        role: "Desarrollador principal · En desarrollo (2025)",
+        // github: "https://github.com/pheralb/svgl",
+    },
+    {
+        title: "Password Generator",
+        description:
+            "Generador de contraseñas seguras con opciones personalizables. Desarrollado con Django y Bootstrap, y desplegado en Render.",
+        image: "/projects/cover-password.png",
+        tags: [TAGS.DJANGO, TAGS.BOOTSTRAP, TAGS.HTML, TAGS.CSS],
+        platforms: ["WEB"],
+        role: "Proyecto personal · 2023",
+        link: "https://django-password-generator-331q.onrender.com",
+        github: "https://github.com/enriquepitta/django-password-generator",
+    },
+    {
+        title: "ClimaApp",
+        description:
+            "App responsive para consultar el clima actual utilizando la API de OpenWeatherMap. Obtiene los datos a través de la ubicación del usuario mediante longitud y latitud, previa autorización.",
+        image: "/projects/cover-climaapp.png",
+        tags: [TAGS.HTML, TAGS.JS, TAGS.CSS],
+        platforms: ["WEB"],
+        role: "Proyecto personal · 2022",
+        github: "https://github.com/enriquepitta/ClimaApp",
+    }
+];
 ---
 
 <div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
+    {
+        APPS.map(({image, title, description, tags, link, github, role, private: isPrivate}) => (
+                <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative flex flex-col items-center gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+                            <img alt={title}
+                                 class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                                 loading="lazy" src={image}/>
+                        </div>
+                    </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
+                    <div class="w-full md:w-1/2 md:max-w-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                            {title}
+                        </h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-0 mb-8 italic">{role}</p>
 
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Code
-              
-            </LinkButton>
-          )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButton>
-          )}
-        </footer>
-    </div>
-  </div>
-</article>
-    ))
-  }
+                        <ul class="flex flex-row mt-2 mb-2 gap-x-2 flex-wrap">
+                            {tags.map((tag) => (
+                                    <li>
+                <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
+                  <tag.icon class="size-4"/>
+                    {tag.name}
+                </span>
+                                    </li>
+                            ))}
+                        </ul>
+
+                        <p class="mt-2 text-gray-700 dark:text-gray-400">{description}</p>
+
+                        <footer class="flex items-end justify-start mt-4 gap-x-4">
+                            {!isPrivate && github && (
+                                    <LinkButton href={github}>
+                                        <GitHub class="size-6"/>
+                                        Code
+                                    </LinkButton>
+                            )}
+                            {link && (
+                                    <LinkButton href={link}>
+                                        <Link class="size-4"/>
+                                        Preview
+                                    </LinkButton>
+                            )}
+                        </footer>
+                    </div>
+                </article>
+        ))
+    }
 </div>
-
-
-
